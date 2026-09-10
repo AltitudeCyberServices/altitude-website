@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Altitude provides practical cybersecurity readiness assessments for businesses. Identify weaknesses, understand your risks and strengthen your security.">
+    <meta name="theme-color" content="#070d18">
+
+    <title>Altitude | Cybersecurity Readiness</title>
+
+    <style>
+        :root {
+            --navy: #070d18;
+            --navy-light: #0c1524;
+            --navy-card: #101c2e;
+            --blue: #4da3ff;
+            --blue-bright: #72b9ff;
+            --white: #f7faff;
+            --silver: #9aa8ba;
+            --border: rgba(255,255,255,0.09);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1120px, 90%);
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+            background: rgba(7, 13, 24, 0.88);
+            backdrop-filter: blur(14px);
+        }
+
+        .nav-inner {
+            width: min(1120px, 90%);
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-weight: 800;
+            font-size: 21px;
+            letter-spacing: 2px;
+        }
+
+        .brand-icon {
+            width: 32px;
+            height: 32px;
+            position: relative;
+        }
+
+        .brand-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--silver);
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-button {
+            background: var(--white);
+            color: var(--navy) !important;
+            padding: 10px 18px;
+            border-radius: 7px;
+            font-weight: 700;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 690px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            right: -180px;
+            top: 20px;
+            background: radial-gradient(circle, rgba(77,163,255,0.12), transparent 65%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(77,163,255,0.25);
+            background: rgba(77,163,255,0.06);
+            color: var(--blue-bright);
+            padding: 7px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .eyebrow-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--blue);
+        }
+
+        h1 {
+            font-size: clamp(48px, 6vw, 76px);
+            line-height: 0.98;
+            letter-spacing: -3px;
+            max-width: 720px;
+        }
+
+        .hero h1 span {
+            color: var(--blue);
+        }
+
+        .hero-description {
+            margin-top: 28px;
+            max-width: 570px;
+            color: var(--silver);
+            font-size: 18px;
+            line-height: 1.75;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            margin-top: 34px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 14px 22px;
+            border-radius: 7px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.25s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-primary {
+            background: var(--blue);
+            color: #06101d;
+        }
+
+        .button-primary:hover {
+            background: var(--blue-bright);
+            transform: translateY(-2px);
+        }
+
+        .button-secondary {
+            border: 1px solid var(--border);
+            color: var(--white);
+        }
+
+        .button-secondary:hover {
+            border-color: rgba(77,163,255,0.5);
+            background: rgba(77,163,255,0.05);
+        }
+
+        /* HERO GRAPHIC */
+
+        .hero-graphic {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 440px;
+        }
+
+        .mountain-wrapper {
+            width: 390px;
+            height: 390px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mountain-glow {
+            position: absolute;
+            width: 310px;
+            height: 310px;
+            border-radius: 50%;
+            background: rgba(77,163,255,0.08);
+            filter: blur(20px);
+        }
+
+        .mountain-logo {
+            width: 290px;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 0 35px rgba(77,163,255,0.17));
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 105px 0;
+        }
+
+        .section-heading {
+            max-width: 650px;
+            margin-bottom: 55px;
+        }
+
+        .section-label {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: clamp(34px, 4vw, 52px);
+            line-height: 1.05;
+            letter-spacing: -1.8px;
+        }
+
+        .section-heading p {
+            margin-top: 18px;
+            color: var(--silver);
+            font-size: 16px;
+        }
+
+        /* ASSESSMENT */
+
+        .assessment {
+            background: var(--navy-light);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--navy-card);
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(77,163,255,0.28);
+        }
+
+        .card-number {
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 22px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 9px;
+        }
+
+        .card p {
+            color: var(--silver);
+            font-size: 14px;
+        }
+
+        /* CHECKS */
+
+        .checks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .check-card {
+            padding: 27px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.025), transparent);
+        }
+
+        .check-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9px;
+            background: rgba(77,163,255,0.1);
+            color: var(--blue);
+            margin-bottom: 22px;
+            font-weight: 900;
+        }
+
+        .check-card h3 {
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .check-card p {
+            color: var(--silver);
+            font-size: 14px;
+        }
+
+        /* PROCESS */
+
+        .process {
+            background: var(--navy-light);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .process-step {
+            position: relative;
+        }
+
+        .step-number {
+            font-size: 13px;
+            color: var(--blue);
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        .process-step h3 {
+            font-size: 21px;
+            margin-bottom: 9px;
+        }
+
+        .process-step p {
+            color: var(--silver);
+            font-size: 14px;
+        }
+
+        /* PRICE */
+
+        .price-box {
+            max-width: 760px;
+            margin: auto;
+            border: 1px solid rgba(77,163,255,0.25);
+            background: linear-gradient(145deg, rgba(77,163,255,0.08), rgba(255,255,255,0.025));
+            border-radius: 18px;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .price-box h2 {
+            margin-bottom: 12px;
+        }
+
+        .price-description {
+            color: var(--silver);
+            max-width: 530px;
+            margin: auto;
+        }
+
+        .price {
+            margin: 30px 0;
+            font-size: 54px;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .price small {
+            font-size: 15px;
+            color: var(--silver);
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+
+        /* CTA */
+
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            max-width: 720px;
+            margin: auto;
+        }
+
+        .cta p {
+            max-width: 570px;
+            margin: 20px auto 30px;
+            color: var(--silver);
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 35px 0;
+            color: var(--silver);
+            font-size: 13px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-brand {
+            color: var(--white);
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 22px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+            .nav-links a:not(.nav-button) {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 80px 0;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-graphic {
+                min-height: 300px;
+                order: -1;
+            }
+
+            .mountain-wrapper {
+                width: 280px;
+                height: 280px;
+            }
+
+            .mountain-logo {
+                width: 220px;
+            }
+
+            .assessment-grid,
+            .checks-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 75px 0;
+            }
+        }
+
+        @media (max-width: 520px) {
+            h1 {
+                font-size: 47px;
+                letter-spacing: -2px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .price-box {
+                padding: 35px 22px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="brand">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 100 100" fill="none">
+                        <path d="M12 78L43 25L58 49L69 33L88 78H12Z"
+                              stroke="#4da3ff"
+                              stroke-width="7"
+                              stroke-linejoin="round"/>
+                        <path d="M39 64V52C39 44 45 38 53 38C61 38 67 44 67 52V64"
+                              stroke="#f7faff"
+                              stroke-width="6"
+                              stroke-linecap="round"/>
+                        <rect x="34" y="59" width="38" height="27" rx="5"
+                              stroke="#f7faff"
+                              stroke-width="6"/>
+                    </svg>
+                </div>
+                ALTITUDE
+            </a>
+
+            <div class="nav-links">
+                <a href="#assessment">Assessment</a>
+                <a href="#security">What We Check</a>
+                <a href="#process">Process</a>
+                <a href="#contact" class="nav-button">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+
+                <div>
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        Cybersecurity Readiness
+                    </div>
+
+                    <h1>
+                        Security at a <span>higher level.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Altitude helps businesses identify cybersecurity weaknesses,
+                        understand their risks and take practical steps towards a
+                        stronger security setup.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#contact" class="button button-primary">
+                            Get Your Assessment
+                        </a>
+
+                        <a href="#assessment" class="button button-secondary">
+                            Explore The Assessment
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="hero-graphic">
+                    <div class="mountain-wrapper">
+                        <div class="mountain-glow"></div>
+
+                        <svg class="mountain-logo" viewBox="0 0 500 500" fill="none">
+                            <path d="M65 385L210 125L278 235L325 160L435 385H65Z"
+                                  stroke="#4da3ff"
+                                  stroke-width="15"
+                                  stroke-linejoin="round"/>
+
+                            <path d="M207 331V279C207 246 233 220 266 220C299 220 325 246 325 279V331"
+                                  stroke="#f7faff"
+                                  stroke-width="14"
+                                  stroke-linecap="round"/>
+
+                            <rect x="188" y="310" width="156" height="105" rx="18"
+                                  fill="#0c1524"
+                                  stroke="#f7faff"
+                                  stroke-width="14"/>
+
+                            <circle cx="266" cy="357" r="12" fill="#4da3ff"/>
+                            <path d="M266 357V382"
+                                  stroke="#4da3ff"
+                                  stroke-width="10"
+                                  stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ASSESSMENT -->
+        <section class="assessment" id="assessment">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div class="section-label">The Assessment</div>
+
+                    <h2>Know where your business stands.</h2>
+
+                    <p>
+                        Cybersecurity doesn't have to be complicated. Our assessment
+                        focuses on practical areas that can have a significant impact
+                        on your business.
+                    </p>
+                </div>
+
+                <div class="assessment-grid">
+
+                    <div class="card">
+                        <div class="card-number">01 / IDENTIFY</div>
+                        <h3>Find potential weaknesses</h3>
+                        <p>
+                            We review key areas of your current security setup to
+                            identify gaps that could leave your business exposed.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-number">02 / PRIORITISE</div>
+                        <h3>Understand your risks</h3>
+                        <p>
+                            Findings are organised clearly so you can understand
+                            which areas deserve attention first.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-number">03 / IMPROVE</div>
+                        <h3>Get practical recommendations</h3>
+                        <p>
+                            Receive straightforward recommendations designed to
+                            help you strengthen your security.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-number">04 / REPORT</div>
+                        <h3>Receive your security report</h3>
+                        <p>
+                            Get a clear report outlining the areas reviewed,
+                            identified gaps and recommended next steps.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- WHAT WE CHECK -->
+        <section id="security">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div class="section-label">What We Check</div>
+
+                    <h2>Cover the fundamentals.</h2>
+
+                    <p>
+                        We focus on core cybersecurity practices that every
+                        business should have considered.
+                    </p>
+                </div>
+
+                <div class="checks-grid">
+
+                    <div class="check-card">
+                        <div class="check-icon">01</div>
+                        <h3>Account Security</h3>
+                        <p>
+                            Review MFA, passwords and account security practices.
+                        </p>
+                    </div>
+
+                    <div class="check-card">
+                        <div class="check-icon">02</div>
+                        <h3>User Access</h3>
+                        <p>
+                            Review who has access to business systems and whether
+                            access is appropriately managed.
+                        </p>
+                    </div>
+
+                    <div class="check-card">
+                        <div class="check-icon">03</div>
+                        <h3>Backups</h3>
+                        <p>
+                            Consider whether important business data is backed up
+                            and protected appropriately.
+                        </p>
+                    </div>
+
+                    <div class="check-card">
+                        <div class="check-icon">04</div>
+                        <h3>Device Security</h3>
+                        <p>
+                            Review basic security controls across business devices.
+                        </p>
+                    </div>
+
+                    <div class="check-card">
+                        <div class="check-icon">05</div>
+                        <h3>Network Security</h3>
+                        <p>
+                            Consider basic network protections and potential areas
+                            of exposure.
+                        </p>
+                    </div>
+
+                    <div class="check-card">
+                        <div class="check-icon">06</div>
+                        <h3>Security Procedures</h3>
+                        <p>
+                            Review whether practical security procedures are in
+                            place for the business.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- PROCESS -->
+        <section class="process" id="process">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div class="section-label">How It Works</div>
+
+                    <h2>Simple. Clear. Practical.</h2>
+
+                    <p>
+                        No complicated technical language. Just a straightforward
+                        process designed to give you a clearer picture of your
+                        cybersecurity readiness.
+                    </p>
+                </div>
+
+                <div class="process-grid">
+
+                    <div class="process-step">
+                        <div class="step-number">01 — ASSESS</div>
+                        <h3>We review your setup</h3>
+                        <p>
+                            We assess the agreed cybersecurity areas and identify
+                            potential weaknesses.
+                        </p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">02 — REPORT</div>
+                        <h3>We explain what we find</h3>
+                        <p>
+                            Your findings are presented in a clear, easy-to-follow
+                            report.
+                        </p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">03 — IMPROVE</div>
+                        <h3>You know what to do next</h3>
+                        <p>
+                            Receive practical recommendations to help improve your
+                            security posture.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- PRICE -->
+        <section>
+            <div class="container">
+
+                <div class="price-box">
+                    <div class="section-label">Introductory Assessment</div>
+
+                    <h2>Cybersecurity Readiness Assessment</h2>
+
+                    <p class="price-description">
+                        A practical review of your business's core cybersecurity
+                        controls, followed by a clear report of our findings and
+                        recommended next steps.
+                    </p>
+
+                    <div class="price">
+                        £99 <small>one-time assessment</small>
+                    </div>
+
+                    <a href="#contact" class="button button-primary">
+                        Request An Assessment
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- CTA -->
+        <section class="cta" id="contact">
+            <div class="container">
+
+                <div class="section-label">Get Started</div>
+
+                <h2>Take the next step towards stronger security.</h2>
+
+                <p>
+                    Interested in understanding where your business currently
+                    stands? Get in touch with Altitude by email.
+                </p>
+
+                <a href="mailto:hello.altitude@hotmail.com"
+                   class="button button-primary">
+                    Email Altitude
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-inner">
+
+            <div>
+                <div class="footer-brand">ALTITUDE</div>
+                <div>Cybersecurity Readiness</div>
+            </div>
+
+            <div class="footer-links">
+                <a href="mailto:hello.altitude@hotmail.com">Contact</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>
